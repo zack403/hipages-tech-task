@@ -1,11 +1,11 @@
-version: '3'
+version: '3.1'
 
 services:
   frontend:
     entrypoint: ["npm", "start"]
     environment:
       NODE_ENV: development
-    image: node:10.15-alpine
+    image: node:16.15-alpine
     ports:
       - "3000:3000"
     volumes:
@@ -16,7 +16,7 @@ services:
     entrypoint: ["npm", "start"]
     environment:
       NODE_ENV: development
-    image: node:10.15-alpine
+    image: node:16.15-alpine
     links:
       - database:database
     ports:
@@ -26,7 +26,7 @@ services:
     working_dir: /opt/backend
   
   database:
-    image: mysql:5.6
+    image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: hipages
       MYSQL_DATABASE: hipages

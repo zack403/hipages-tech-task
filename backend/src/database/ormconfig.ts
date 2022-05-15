@@ -1,19 +1,19 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as dotenv from "dotenv";
-import { CategoryEntity } from '../core/entities/category.entity' 
-import { JobEntity } from '../core/entities/job.entity';
-import { SuburbEntity } from '../core/entities/suburb.entity';
 dotenv.config();
 
  
 const databaseConfig: TypeOrmModuleOptions  = {
       type: 'mysql',
-      host: process.env?.HOST,
-      port: Number(process.env?.MYSQL_PORT),
-      username: process.env?.USER,
-      password: process.env?.PASS,
-      database: process.env?.DB,
-      entities: [SuburbEntity, JobEntity, CategoryEntity],
+      host: process.env?.HOST || 'localhost',
+      port: Number(process.env?.MYSQL_PORT) || 3306,
+      username: process.env?.USER || 'root',
+      password: process.env?.PASS || 'hipages',
+      database: process.env?.DB || 'hipages',
+      entities: [
+        __dirname + '/../**/*.entity.ts',
+        __dirname + '/../**/*.entity.js',
+      ],
       synchronize: true,
       migrations: process.env?.NODE_ENV === 'production' ? ["dist/database/migrations/*.js"] : ["dist/database/migrations/*{.,.js}"],
       migrationsTableName: "migrations_typeorm",

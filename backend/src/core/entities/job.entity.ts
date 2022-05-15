@@ -36,11 +36,11 @@ export class JobEntity extends AbstractBaseEntity {
   @Column({type: 'text'})
   description: string;
   
-  @ManyToOne(() => CategoryEntity, { eager: true})
+  @ManyToOne(() => CategoryEntity)
   @JoinColumn({ name: 'category_id', referencedColumnName: 'id'})
   category: CategoryEntity;
 
-  @ManyToOne(() => SuburbEntity, { eager: true})
+  @ManyToOne(() => SuburbEntity)
   @JoinColumn({ name: 'suburb_id', referencedColumnName: 'id'})
   suburb: SuburbEntity;
 

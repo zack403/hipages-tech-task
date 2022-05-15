@@ -177,7 +177,7 @@ export class JobService {
 
       return clientFeedback({
         error: false,
-        sucessMessage: "Successfully updated",
+        sucessMessage: payload.status === JobStatus.ACCEPTED ? "Successfully accepted" : "Successfully declined",
         statusCode: 200
       });
 
