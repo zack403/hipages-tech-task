@@ -1,0 +1,47 @@
+.mainContainer {
+    background-color: #e4e4e4;
+    padding: 10px;
+  }
+  
+  .buttonGroup {
+    display: flex;
+  }
+  
+  .navButton {
+    width: 50%;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #d0d0d0;
+    height: 50px;
+    font-weight: 'none';
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .navButton:hover,
+  .navButton:focus,
+  .selectedBtn:hover,
+  .selectedBtn:focus {
+    background-color: #ffffff;
+    color: #000000;
+    outline: none !important;
+    outline-offset: none !important;
+  }
+  
+  .selectedBtn {
+    width: 50%;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #d0d0d0;
+    height: 50px;
+    font-weight: 500;
+    border-bottom: 3px solid #ff7b12;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
