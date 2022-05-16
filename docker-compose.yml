@@ -17,10 +17,10 @@ services:
     environment:
       NODE_ENV: development
     image: node:16.15-alpine
-    links:
-      - database:database
     ports:
       - "8080:8080"
+    depends_on:
+      - database
     volumes:
       - ./backend:/opt/backend
     working_dir: /opt/backend
@@ -28,9 +28,9 @@ services:
   database:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: hipages
-      MYSQL_DATABASE: hipages
+      MYSQL_ROOT_PASSWORD: hipages_pass
+      MYSQL_DATABASE: hipagesDB
     ports:
-      - "3306:3306"
+      - "3366:3306"
     volumes:
       - ./docker/mysql:/docker-entrypoint-initdb.d

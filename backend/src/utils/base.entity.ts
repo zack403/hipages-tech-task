@@ -8,7 +8,7 @@ export abstract class AbstractBaseEntity extends BaseEntity {
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
     created_at: Date
 
-    @UpdateDateColumn({ type: "timestamp", default:  "0000-00-00 00:00:00", onUpdate: "CURRENT_TIMESTAMP(6)"})
+    @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)"})
     updated_at: Date
 
 }
