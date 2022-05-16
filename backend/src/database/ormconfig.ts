@@ -5,8 +5,8 @@ dotenv.config();
  
 const databaseConfig: TypeOrmModuleOptions  = {
       type: 'mysql',
-      host: process.env?.HOST || 'lead-management-task_database_1',
-      port: Number(process.env?.MYSQL_PORT) || 3366,
+      host: process.env?.HOST || 'database',
+      port: Number(process.env?.MYSQL_PORT) || 3306,
       username: process.env?.USER || 'root',
       password: process.env?.PASS || 'hipages_pass',
       database: process.env?.DB || 'hipagesDB',

@@ -28,6 +28,8 @@ The folder structure resides on the src folder -
 When the application starts, typeorm uses the file in the database folder to connect to the database
 ceates the entities, add relationship between the entities and starts listening for incoming request
 - request come through the controller folder (job.controller), the controller uses dependency injection by injecting the jobService in its constructor and pass request to the service via its method in the class
+- i have made the getAll jobs endpoint to accept a filter param (status, search, page, limit) this is useful for perfomance purpose and not put heavy load on the server to load all records
+- the update job status endpoint accept the status to update to param and does the update.
 - Class validator has been used for necessary validations
 - the service then picks this request and pass it to the repository to talk to the database whether to retrieve or insert records, so i made sure its only the repository that knows how to talk to the database
 - the service is responsible for getting the data from the repository and sending it back to the controller which in turns sends it to the request initiator.
@@ -48,6 +50,8 @@ The folder structure resides on the src folder
 
 How the pieces works together
 - The two tabs reside in the tab.tsx file and its responsible for switching between the invited and accepted tabs and rendering the respective component based on selected tab
+- the invited and accepted component calls the same endpoint but passing different JobStatus enums
+- the accept and decline button calls the same endpoint but also passes different JobStatus enum
 - the content area resides in the content.tsx file which hold the job data info
 - the invited and accepted component is responsible for making api calls and returns the content component and pass it the data it needs to display on the ui respectively
 - i have also used enum on the frontend to represent tabState and JobStatus to have consistency
