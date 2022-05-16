@@ -20,8 +20,8 @@ const Invited = () => {
           page: 1,
           limit: 20
         }
-        const result: any = await JobDataService.getAll(query);
-        setInvitedJobs(result.data.data.data);
+        const {data: {data: {data}}} = await JobDataService.getAll(query);
+        setInvitedJobs(data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);

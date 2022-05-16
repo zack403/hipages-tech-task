@@ -21,8 +21,8 @@ const Accepted = () => {
           page: 1,
           limit: 20
         }
-        const result: any = await JobDataService.getAll(query);
-        setAcceptedJobs(result.data.data.data);
+        const {data: {data: {data}}} = await JobDataService.getAll(query);
+        setAcceptedJobs(data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);

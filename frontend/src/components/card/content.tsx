@@ -8,6 +8,7 @@ import { JobStatus, TabState } from "../../utils/enum";
 import { getFirstCharFromName } from "../../utils/getFirstCharFromName";
 import styles from "./content.module.css";
 import JobDataService from "../../services/job";
+import { formatToMoney } from "../../utils/currencyFormatter";
 
 
 const Content = ({ job, tabState, bgColor }: IProps) => {
@@ -17,10 +18,9 @@ const Content = ({ job, tabState, bgColor }: IProps) => {
   const acceptJob = async (jobId: string) => {
     try {
       setAccepting(true);
-      const r: any = await JobDataService.update({status: JobStatus.ACCEPTED}, jobId);
+      const {data: {sucessMessage}} = await JobDataService.update({status: JobStatus.ACCEPTED}, jobId);
       setAccepting(false);
-      console.log(r);
-      alert(r.data.data.successMessage)
+      alert(sucessMessage);
     } catch (error) {
       console.log(error);
       setAccepting(false);
@@ -30,9 +30,9 @@ const Content = ({ job, tabState, bgColor }: IProps) => {
   const declineJob = async (jobId: string) => {
     try {
       setDeclining(true);
-      const r: any = await JobDataService.update({status: JobStatus.DECLINED}, jobId);
+      const {data: {sucessMessage}} = await JobDataService.update({status: JobStatus.DECLINED}, jobId);
       setDeclining(false);
-      alert(r.data.successMessage)
+      alert(sucessMessage);
     } catch (error) {
       console.log(error);
       setDeclining(false);
@@ -59,7 +59,7 @@ const Content = ({ job, tabState, bgColor }: IProps) => {
         </div>
         <div className={styles.id}>Job ID: {job.id}</div>
         { tabState === TabState.ACCEPTED && 
-          <div className={styles.price_lead}>${job.price.toFixed(2)} Lead Invitation</div> 
+          <div className={styles.price_lead}>{formatToMoney.format(job.price)} Lead Invitation</div> 
         }
 
       </div>
@@ -77,11 +77,11 @@ const Content = ({ job, tabState, bgColor }: IProps) => {
       }
       
       
-      <div className={styles.comment_row}>{job.description}</div>
+      <div className={styles.description_row}>{job.description}</div>
        { tabState === TabState.INVITED && <div className={styles.actions}>
         <div onClick={() => acceptJob(job.id)} className={styles.accept}>{accepting ? 'Processing...' : 'Accept'}</div>
         <div onClick={() => declineJob(job.id)} className={styles.reject}>{declining ? 'Processing...' : 'Decline'}</div>
-        <div className={styles.price}>${job.price.toFixed(2)} </div>
+        <div className={styles.price}>{formatToMoney.format(job.price)}</div>
         <div className={styles.lead}>Lead Invitation</div>
       </div> }
     </div>
