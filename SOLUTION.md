@@ -35,7 +35,7 @@ ceates the entities, add relationship between the entities and starts listening 
 - the service is responsible for getting the data from the repository and sending it back to the controller which in turns sends it to the request initiator.
  - i have also use enum (JobStatus) across the application for necessary validations and apply them where necessary, some of the benefit of using eneum are single source of truth, consistency, error highlighting
  - pagination, searching, sorting and filtering has been put in the getAll request to ensure we dont put too much load on the server in case this application grew larger abd become complex.
- - I have also enabled Swagger documentation for the api's via NestJS main module, this will be helpful in case the application grew large and become complex
+ - I have also enabled Swagger documentation (* at http://localhost:8080/api/v1/docs) for the api's via NestJS main module, this will be helpful in case the application grew large and become complex
  - uniform response message has been put in place to ensure smooth experience on the frontend
  - A docker file has been included with instructions on how to build the app for the docker compose to take over
 

@@ -5,5 +5,5 @@ export default interface IProps {
     job: IJobData;
     tabState: TabState;
     bgColor?: string,
-    getInvitedJobs?: any
+    setInvitedJobs?: any
 }

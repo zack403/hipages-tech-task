@@ -9,9 +9,10 @@ import { getFirstCharFromName } from "../../utils/getFirstCharFromName";
 import styles from "./content.module.css";
 import JobDataService from "../../services/job";
 import { formatToMoney } from "../../utils/currencyFormatter";
+import IJobData from "../../type/jobs";
 
 
-const Content = ({ job, tabState, bgColor }: IProps) => {
+const Content = ({ job, tabState, bgColor, setInvitedJobs }: IProps) => {
   const [accepting, setAccepting] = useState(false);
   const [declining, setDeclining] = useState(false);
 
@@ -20,7 +21,8 @@ const Content = ({ job, tabState, bgColor }: IProps) => {
       setAccepting(true);
       const {data: {sucessMessage}} = await JobDataService.update({status: JobStatus.ACCEPTED}, jobId);
       setAccepting(false);
-      alert(sucessMessage);
+      setInvitedJobs((currentValue: [IJobData]) => currentValue.filter((job: IJobData) => job.id !== jobId));
+      //alert(sucessMessage);
     } catch (error) {
       console.log(error);
       setAccepting(false);

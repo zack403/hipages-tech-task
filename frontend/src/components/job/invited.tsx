@@ -44,7 +44,7 @@ const Invited = () => {
       {invitedJobs && invitedJobs.length > 0 ? (
         <>
           {invitedJobs.map((job: IJobData) => (
-            <Content key={job.id} tabState={TabState.INVITED} job={job} />
+            <Content key={job.id} tabState={TabState.INVITED} job={job} setInvitedJobs={setInvitedJobs} />
           ))}
         </>
       ) : (
