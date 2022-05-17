@@ -40,7 +40,7 @@ ceates the entities, add relationship between the entities and starts listening 
  - A docker file has been included with instructions on how to build the app for the docker compose to take over
 
 ## Frontend
-The frontend was written in React with react-bootstrap for the styling and axios for making api calls
+The frontend was written in React with module css pattern for the styling and axios for making api calls
 The design follows the seperation of concerns pattern
 The folder structure resides on the src folder
 - components (card, tab , job) - this is where we have the each piece of the ui with there relevant css

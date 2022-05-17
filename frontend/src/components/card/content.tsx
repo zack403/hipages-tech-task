@@ -34,7 +34,7 @@ const Content = ({ job, tabState, bgColor, setInvitedJobs }: IProps) => {
       setDeclining(true);
       const {data: {sucessMessage}} = await JobDataService.update({status: JobStatus.DECLINED}, jobId);
       setDeclining(false);
-      alert(sucessMessage);
+      setInvitedJobs((currentValue: [IJobData]) => currentValue.filter((job: IJobData) => job.id !== jobId));
     } catch (error) {
       console.log(error);
       setDeclining(false);
