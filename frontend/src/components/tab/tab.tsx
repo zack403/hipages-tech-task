@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
 import { TabState } from "../../utils/enum";
 import Accepted from "../job/accepted";
 import Invited from "../job/invited";
@@ -10,7 +9,7 @@ const TabComponent = () => {
 
   return (
     <div>
-      <Container>
+      
         <div className={styles.mainContainer}>
           <div className={styles.buttonGroup}>
             <div
@@ -34,7 +33,7 @@ const TabComponent = () => {
           </div>
           {selectedTab === TabState.INVITED ? <Invited /> : <Accepted />}
         </div>
-      </Container>
+    
     </div>
   );
 };

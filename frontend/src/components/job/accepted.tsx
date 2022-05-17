@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
 import IFilter from "../../type/filter";
 import { JobStatus, TabState } from "../../utils/enum";
 import Content from "../card/content";
@@ -35,7 +34,7 @@ const Accepted = () => {
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center p-5">
-        <Spinner animation="border" />
+        <span>Loading...</span>
       </div>
     );
   }

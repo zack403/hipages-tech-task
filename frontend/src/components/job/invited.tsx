@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
 import { JobStatus, TabState } from "../../utils/enum";
 import Content from "../card/content";
 import JobDataService from "../../services/job";
@@ -34,7 +33,7 @@ const Invited = () => {
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center p-5">
-        <Spinner animation="border" />
+        <span>Loading...</span>
       </div>
     );
   }

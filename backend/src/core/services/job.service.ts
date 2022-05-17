@@ -78,7 +78,7 @@ export class JobService {
                     .orWhere("category.name Like :cname", { cname: `%${search}%`})
                     .orWhere("suburb.name Like :sname", { sname: `%${search}%` })
                 }))
-                .orderBy("j.created_at", "DESC")
+                .orderBy("j.updated_at", "DESC")
                 .skip(page ? limit * (page - 1) : 0)
                 .take(limit)
                 .getManyAndCount();
@@ -101,7 +101,7 @@ export class JobService {
     }
 
     const [items, count] =  await this.jobRepo.findAndCount({ 
-      order: {created_at: 'DESC'}, where: {status}, relations: ['category', 'suburb'], 
+      order: {updated_at: 'DESC'}, where: {status}, relations: ['category', 'suburb'], 
       take: limit, 
       skip: page ? limit * (page - 1) : 0});
 
